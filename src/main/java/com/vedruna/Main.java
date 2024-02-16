@@ -49,18 +49,18 @@ public class Main implements CommandLineRunner {
 
 		// Creación y almacenamiento de usuarios y publicaciones de ejemplo
 
-		User user1 = new User("Ricardo", "root@root.es", "root", "root", "2024-02-15");
+		User user1 = new User("root", "root@root.es", "root", "root", "2024-02-15");
 		userRepository.save(user1);
 		Publication publication1 = new Publication(user1, "root", "2024-02-15", "2024-02-15");
 		user1.addPublication(publication1);
 		publicationRepository.save(publication1);
 
-		User user2 = new User("Jose Luis", "joselu@joselu.es", "4321", "Jose2 descrito", "2024-02-15");
+		User user2 = new User("Jose Luis", "joselu@joselu.es", "4321", "El mejor", "2024-02-15");
 		userRepository.save(user2);
-		Publication publication2 = new Publication(user2, "Primera publicación de Jose2", "2024-02-02", "2024-02-05");
+		Publication publication2 = new Publication(user2, "Flutter es lo peor", "2024-02-02", "2024-02-05");
 		user2.addPublication(publication2);
 		publicationRepository.save(publication2);
-		Publication publication3 = new Publication(user2, "Segunda publicación de Jose2", "2024-03-02", "2024-03-05");
+		Publication publication3 = new Publication(user2, "Primer día en ferretería Puri", "2024-03-02", "2024-03-05");
 		user2.addPublication(publication3);
 		publicationRepository.save(publication3);
 
