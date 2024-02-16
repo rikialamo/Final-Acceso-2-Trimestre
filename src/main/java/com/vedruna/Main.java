@@ -66,8 +66,8 @@ public class Main implements CommandLineRunner {
 
 		Usuario user3 = new Usuario("Ricardo", "ricardo@ricardo.es", "1234", "Volando alto", "2024-02-15");
 		userRepository.save(user3);
-		Publicacion publication4 = new Publicacion(user1, "Siempre volando alto", "2024-02-15", "2024-02-15");
-		user2.addPublication(publication4);
+		Publicacion publication4 = new Publicacion(user3, "Siempre volando alto", "2024-02-15", "2024-02-15");
+		user3.addPublication(publication4);
 		publicationRepository.save(publication4);
 		Publicacion publication5 = new Publicacion(user3, "Top 3 ....", "2024-02-15", "2024-02-15");
 		user2.addPublication(publication5);
@@ -76,10 +76,11 @@ public class Main implements CommandLineRunner {
 		user2.addPublication(publication6);
 		publicationRepository.save(publication6);
 
-		linkService.add(user3, user1);
-		linkService.add(user3, user2);
-		linkService.add(user2, user3);
+		linkService.add(user1, user2);
 		linkService.add(user1, user3);
+		linkService.add(user2, user3);
 		linkService.add(user2, user1);
+		linkService.add(user3, user2);
+		linkService.add(user3, user1);
 	}
 }
