@@ -38,7 +38,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class Usuario implements UserDetails {
 
 	/**
 	 * Identificador único del usuario.
@@ -81,7 +81,7 @@ public class User implements UserDetails {
 	 * Lista de publicaciones realizadas por el usuario.
 	 */
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Publication> publications;
+	private List<Publicacion> publications;
 
 	/**
 	 * Lista de enlaces de seguimiento asociados al usuario.
@@ -99,7 +99,7 @@ public class User implements UserDetails {
 	/**
 	 * Constructor para crear un usuario con el rol especificado.
 	 */
-	public User(String username, String email, String password, String description, String creationDate, Role role) {
+	public Usuario(String username, String email, String password, String description, String creationDate, Role role) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -113,14 +113,14 @@ public class User implements UserDetails {
 	/**
 	 * Constructor adicional para crear un usuario con el rol USER por defecto.
 	 */
-	public User(String username, String email, String password, String description, String creationDate) {
+	public Usuario(String username, String email, String password, String description, String creationDate) {
 		this(username, email, password, description, creationDate, Role.USER);
 	}
 
 	/**
 	 * Método para agregar una publicación a la lista de publicaciones del usuario.
 	 */
-	public void addPublication(Publication publication) {
+	public void addPublication(Publicacion publication) {
 		publications.add(publication);
 	}
 
@@ -128,7 +128,7 @@ public class User implements UserDetails {
 	 * Método para eliminar una publicación de la lista de publicaciones del
 	 * usuario.
 	 */
-	public void removePublication(Publication publication) {
+	public void removePublication(Publicacion publication) {
 		publications.remove(publication);
 	}
 

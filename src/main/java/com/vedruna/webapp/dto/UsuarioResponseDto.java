@@ -5,7 +5,7 @@ package com.vedruna.webapp.dto;
  * usuarios. Define métodos para acceder a los atributos esenciales de un
  * usuario.
  */
-public interface UserResponseDto {
+public interface UsuarioResponseDto {
 
 	/**
 	 * Obtiene el identificador único del usuario.

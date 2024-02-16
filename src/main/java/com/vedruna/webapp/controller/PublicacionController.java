@@ -2,8 +2,8 @@ package com.vedruna.webapp.controller;
 
 import java.util.List;
 
-import com.vedruna.webapp.dto.PublicationRequestDto;
-import com.vedruna.webapp.service.PublicationService;
+import com.vedruna.webapp.dto.PublicacionRequestDto;
+import com.vedruna.webapp.service.PublicacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vedruna.webapp.dto.PublicationResponseDto;
+import com.vedruna.webapp.dto.PublicacionResponseDto;
 
 @RequestMapping("/api/publication")
 @RestController
@@ -27,10 +27,10 @@ import com.vedruna.webapp.dto.PublicationResponseDto;
  * Controlador para gestionar operaciones relacionadas con las publicaciones en
  * la API.
  */
-public class PublicationController {
+public class PublicacionController {
 
 	@Autowired
-	private PublicationService publicationService;
+	private PublicacionService publicationService;
 
 	/**
 	 * Recupera una publicación por su identificador.
@@ -40,7 +40,7 @@ public class PublicationController {
 	 */
 	@GetMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public PublicationResponseDto findById(@PathVariable long id) {
+	public PublicacionResponseDto findById(@PathVariable long id) {
 		return publicationService.findById(id);
 	}
 
@@ -63,7 +63,7 @@ public class PublicationController {
 	 */
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public void insert(@RequestBody PublicationRequestDto publicationRequestDto) {
+	public void insert(@RequestBody PublicacionRequestDto publicationRequestDto) {
 		publicationService.insert(publicationRequestDto);
 	}
 
@@ -75,7 +75,7 @@ public class PublicationController {
 	 */
 	@PutMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public void update(@PathVariable long id, @RequestBody PublicationRequestDto publicationRequestDto) {
+	public void update(@PathVariable long id, @RequestBody PublicacionRequestDto publicationRequestDto) {
 		publicationService.update(id, publicationRequestDto);
 	}
 
@@ -86,7 +86,7 @@ public class PublicationController {
 	 */
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<PublicationResponseDto> getAll() {
+	public List<PublicacionResponseDto> getAll() {
 		return publicationService.findAll();
 	}
 

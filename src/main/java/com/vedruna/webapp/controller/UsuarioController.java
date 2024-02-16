@@ -2,7 +2,7 @@ package com.vedruna.webapp.controller;
 
 import java.util.List;
 
-import com.vedruna.webapp.service.UserService;
+import com.vedruna.webapp.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vedruna.webapp.dto.PublicationResponseDto;
-import com.vedruna.webapp.dto.UserResponseDto;
+import com.vedruna.webapp.dto.PublicacionResponseDto;
+import com.vedruna.webapp.dto.UsuarioResponseDto;
 
 /**
  * Controlador para gestionar operaciones relacionadas con usuarios en la API.
@@ -23,10 +23,10 @@ import com.vedruna.webapp.dto.UserResponseDto;
 @RequestMapping("/api/user")
 @RestController
 @CrossOrigin
-public class UserController {
+public class UsuarioController {
 
 	@Autowired
-	private UserService userService;
+	private UsuarioService userService;
 
 	/**
 	 * Recupera todos los usuarios disponibles.
@@ -35,7 +35,7 @@ public class UserController {
 	 */
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<UserResponseDto> findAll() {
+	public List<UsuarioResponseDto> findAll() {
 		return userService.findAll();
 	}
 
@@ -47,7 +47,7 @@ public class UserController {
 	 */
 	@GetMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public UserResponseDto findById(@PathVariable Long id) {
+	public UsuarioResponseDto findById(@PathVariable Long id) {
 		return userService.findById(id);
 	}
 
@@ -60,7 +60,7 @@ public class UserController {
 	 */
 	@GetMapping("/username/{username}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public UserResponseDto findByUserName(@PathVariable String username) {
+	public UsuarioResponseDto findByUserName(@PathVariable String username) {
 		return userService.findByUsername(username);
 	}
 
@@ -72,7 +72,7 @@ public class UserController {
 	 */
 	@GetMapping("/{id}/followerpeople")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<UserResponseDto> findFollowerPeopleById(@PathVariable Long id) {
+	public List<UsuarioResponseDto> findFollowerPeopleById(@PathVariable Long id) {
 		return userService.findFollowerPeopleById(id);
 	}
 
@@ -84,7 +84,7 @@ public class UserController {
 	 */
 	@GetMapping("/{id}/followedpeople")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<UserResponseDto> findFollowedPeopleById(@PathVariable Long id) {
+	public List<UsuarioResponseDto> findFollowedPeopleById(@PathVariable Long id) {
 		return userService.findFollowedPeopleById(id);
 	}
 
@@ -108,7 +108,7 @@ public class UserController {
 	 */
 	@GetMapping("/{id}/publications")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<PublicationResponseDto> findPublicationsById(@PathVariable Long id) {
+	public List<PublicacionResponseDto> findPublicationsById(@PathVariable Long id) {
 		return userService.findPublicationsById(id);
 	}
 
@@ -122,7 +122,7 @@ public class UserController {
 	 */
 	@GetMapping("/{id}/followedpeople/publications")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<PublicationResponseDto> findFollowedPeoplePublicationsById(@PathVariable Long id) {
+	public List<PublicacionResponseDto> findFollowedPeoplePublicationsById(@PathVariable Long id) {
 		return userService.findFollowedPeoplePublicationsById(id);
 	}
 

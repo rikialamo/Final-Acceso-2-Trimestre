@@ -1,7 +1,7 @@
 package com.vedruna.webapp.controller;
 
-import com.vedruna.webapp.exceptions.PublicationNotFoundException;
-import com.vedruna.webapp.exceptions.UserNotFoundException;
+import com.vedruna.webapp.exceptions.PublicacionNotFoundException;
+import com.vedruna.webapp.exceptions.UsuarioNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -47,10 +47,10 @@ public class ExceptionHandlerController {
 	/**
 	 * Maneja el caso en el que no se encuentra un usuario.
 	 *
-	 * @param e La excepción lanzada (UserNotFoundException).
+	 * @param e La excepción lanzada (UsuarioNotFoundException).
 	 * @return Mensaje de error que indica que no se encontró al usuario.
 	 */
-	@ExceptionHandler(UserNotFoundException.class)
+	@ExceptionHandler(UsuarioNotFoundException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public String handleUserNotFoundException(Exception e) {
 		return e.getMessage();
@@ -59,10 +59,10 @@ public class ExceptionHandlerController {
 	/**
 	 * Maneja el caso en el que no se encuentra una publicación.
 	 *
-	 * @param e La excepción lanzada (UserNotFoundException).
+	 * @param e La excepción lanzada (UsuarioNotFoundException).
 	 * @return Mensaje de error que indica que no se encontró al usuario.
 	 */
-	@ExceptionHandler(PublicationNotFoundException.class)
+	@ExceptionHandler(PublicacionNotFoundException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public String handlePublicationNotFoundException(Exception e) {
 		return e.getMessage();

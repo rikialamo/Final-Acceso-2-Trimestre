@@ -3,36 +3,36 @@ package com.vedruna.webapp.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.vedruna.webapp.exceptions.PublicationIncorrectAuthorException;
-import com.vedruna.webapp.persistence.model.Publication;
-import com.vedruna.webapp.persistence.model.User;
+import com.vedruna.webapp.exceptions.PublicacionIncorrectAuthorException;
+import com.vedruna.webapp.persistence.model.Publicacion;
+import com.vedruna.webapp.persistence.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vedruna.webapp.dto.PublicationRequestDto;
-import com.vedruna.webapp.dto.PublicationResponseDto;
-import com.vedruna.webapp.exceptions.PublicationNotFoundException;
-import com.vedruna.webapp.persistence.repository.PublicationRepository;
-import com.vedruna.webapp.persistence.repository.UserRepository;
+import com.vedruna.webapp.dto.PublicacionRequestDto;
+import com.vedruna.webapp.dto.PublicacionResponseDto;
+import com.vedruna.webapp.exceptions.PublicacionNotFoundException;
+import com.vedruna.webapp.persistence.repository.PublicacionRepository;
+import com.vedruna.webapp.persistence.repository.UsuarioRepository;
 
 /**
  * Servicio que gestiona operaciones relacionadas con las publicaciones.
  */
 @Service
-public class PublicationService {
+public class PublicacionService {
 
 	@Autowired
-	private PublicationRepository publicationRepository;
+	private PublicacionRepository publicationRepository;
 
 	@Autowired
-	private UserRepository userRepository;
+	private UsuarioRepository userRepository;
 
 	/**
 	 * Obtiene todas las publicaciones en formato DTO.
 	 *
 	 * @return Lista de DTO de publicaciones.
 	 */
-	public List<PublicationResponseDto> findAll() {
+	public List<PublicacionResponseDto> findAll() {
 		return publicationRepository.findAllPublicationsResponseDto();
 	}
 
@@ -41,15 +41,15 @@ public class PublicationService {
 	 *
 	 * @param id Identificador de la publicación.
 	 * @return DTO de la publicación.
-	 * @throws PublicationNotFoundException si no se encuentra la publicación.
+	 * @throws PublicacionNotFoundException si no se encuentra la publicación.
 	 */
-	public PublicationResponseDto findById(Long id) {
-		Optional<PublicationResponseDto> optionalPublicationGetDto = publicationRepository
+	public PublicacionResponseDto findById(Long id) {
+		Optional<PublicacionResponseDto> optionalPublicationGetDto = publicationRepository
 				.findPublicationResponseDtoById(id);
 		if (optionalPublicationGetDto.isPresent()) {
 			return optionalPublicationGetDto.get();
 		} else {
-			throw new PublicationNotFoundException(id);
+			throw new PublicacionNotFoundException(id);
 		}
 	}
 
@@ -59,14 +59,14 @@ public class PublicationService {
 	 * @param id Identificador de la publicación.
 	 */
 	public void deleteById(Long id) {
-		Optional<Publication> optionalPublication = publicationRepository.findById(id);
+		Optional<Publicacion> optionalPublication = publicationRepository.findById(id);
 		if (optionalPublication.isPresent()) {
-			Publication publication = optionalPublication.get();
-			User user = publication.getUser();
+			Publicacion publication = optionalPublication.get();
+			Usuario user = publication.getUser();
 			user.removePublication(publication);
 			publicationRepository.deleteById(id);
 		} else {
-			throw new PublicationNotFoundException(id);
+			throw new PublicacionNotFoundException(id);
 		}
 	}
 
@@ -74,19 +74,19 @@ public class PublicationService {
 	 * Inserta una nueva publicación.
 	 *
 	 * @param publicationPostDto DTO con la información de la nueva publicación.
-	 * @throws PublicationNotFoundException si no se encuentra el usuario asociado a
+	 * @throws PublicacionNotFoundException si no se encuentra el usuario asociado a
 	 *                                      la publicación.
 	 */
-	public void insert(PublicationRequestDto publicationRequestDto) {
+	public void insert(PublicacionRequestDto publicationRequestDto) {
 		Long id = publicationRequestDto.getUserId();
-		Optional<User> optionalUser = userRepository.findById(id);
+		Optional<Usuario> optionalUser = userRepository.findById(id);
 		if (optionalUser.isPresent()) {
-			User user = optionalUser.get();
-			Publication publication = new Publication(user, publicationRequestDto.getText(),
+			Usuario user = optionalUser.get();
+			Publicacion publication = new Publicacion(user, publicationRequestDto.getText(),
 					publicationRequestDto.getCreationDate(), publicationRequestDto.getEditionDate());
 			publicationRepository.save(publication);
 		} else {
-			throw new PublicationNotFoundException(id);
+			throw new PublicacionNotFoundException(id);
 		}
 	}
 
@@ -95,25 +95,25 @@ public class PublicationService {
 	 *
 	 * @param publicationPutDto DTO con la información actualizada de la
 	 *                          publicación.
-	 * @throws PublicationNotFoundException        si no se encuentra la
+	 * @throws PublicacionNotFoundException        si no se encuentra la
 	 *                                             publicación.
-	 * @throws PublicationIncorrectAuthorException si el autor de la publicación no
+	 * @throws PublicacionIncorrectAuthorException si el autor de la publicación no
 	 *                                             coincide.
 	 */
-	public void update(long id, PublicationRequestDto publicationRequestDto) {
-		Optional<Publication> optionalPublication = publicationRepository.findById(id);
+	public void update(long id, PublicacionRequestDto publicationRequestDto) {
+		Optional<Publicacion> optionalPublication = publicationRepository.findById(id);
 		if (optionalPublication.isPresent()) {
-			Publication publication = optionalPublication.get();
+			Publicacion publication = optionalPublication.get();
 			if (publication.getUser().getId().equals(publicationRequestDto.getUserId())) {
 				publication.setText(publicationRequestDto.getText());
 				publication.setCreationDate(publicationRequestDto.getCreationDate());
 				publication.setEditionDate(publicationRequestDto.getEditionDate());
 				publicationRepository.save(publication);
 			} else {
-				throw new PublicationIncorrectAuthorException(id);
+				throw new PublicacionIncorrectAuthorException(id);
 			}
 		} else {
-			throw new PublicationNotFoundException(id);
+			throw new PublicacionNotFoundException(id);
 		}
 	}
 

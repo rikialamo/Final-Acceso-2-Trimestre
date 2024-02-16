@@ -22,7 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "publications")
-public class Publication {
+public class Publicacion {
 
 	/**
 	 * Identificador único de la publicación.
@@ -36,7 +36,7 @@ public class Publication {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "user")
-	private User user;
+	private Usuario user;
 
 	/**
 	 * Texto de la publicación.
@@ -65,7 +65,7 @@ public class Publication {
 	 * @param creationDate Fecha de creación de la publicación.
 	 * @param editionDate  Fecha de edición de la publicación.
 	 */
-	public Publication(User user, String text, String creationDate, String editionDate) {
+	public Publicacion(Usuario user, String text, String creationDate, String editionDate) {
 		this.user = user;
 		this.text = text;
 		this.creationDate = creationDate;

@@ -5,7 +5,7 @@ package com.vedruna.webapp.dto;
  * publicaciones. Define métodos para acceder a los atributos de una
  * publicación.
  */
-public interface PublicationResponseDto {
+public interface PublicacionResponseDto {
 
 	/**
 	 * Obtiene el identificador único de la publicación.

@@ -5,7 +5,7 @@ package com.vedruna.webapp.exceptions;
  * incorrecto. Se lanza cuando se intenta realizar una operación que requiere un
  * autor específico en una publicación.
  */
-public class PublicationIncorrectAuthorException extends RuntimeException {
+public class PublicacionIncorrectAuthorException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,7 +14,7 @@ public class PublicationIncorrectAuthorException extends RuntimeException {
 	 *
 	 * @param id El identificador de la publicación incorrecta.
 	 */
-	public PublicationIncorrectAuthorException(long id) {
+	public PublicacionIncorrectAuthorException(long id) {
 		super("Publicación no encontrada: id = " + id);
 	}
 }

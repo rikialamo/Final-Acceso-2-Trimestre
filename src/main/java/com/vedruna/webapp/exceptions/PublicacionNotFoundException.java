@@ -5,7 +5,7 @@ package com.vedruna.webapp.exceptions;
  * Se lanza cuando se intenta acceder a una publicación que no existe en la base
  * de datos.
  */
-public class PublicationNotFoundException extends RuntimeException {
+public class PublicacionNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,7 +14,7 @@ public class PublicationNotFoundException extends RuntimeException {
 	 *
 	 * @param id El identificador de la publicación no encontrada.
 	 */
-	public PublicationNotFoundException(long id) {
+	public PublicacionNotFoundException(long id) {
 		super("Publicación no encontrada: id = " + id);
 	}
 }

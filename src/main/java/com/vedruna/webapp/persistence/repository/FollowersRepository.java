@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
  * Repositorio de JPA para la entidad followers, que gestiona las operaciones de base
  * de datos relacionadas con las relaciones de seguimiento.
  */
-public interface LinkRepository extends JpaRepository<followers, Long> {
+public interface FollowersRepository extends JpaRepository<followers, Long> {
 
 	/**
 	 * Consulta personalizada para buscar una relación de seguimiento por el

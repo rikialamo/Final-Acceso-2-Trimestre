@@ -2,22 +2,22 @@ package com.vedruna.webapp.service;
 
 import java.util.Optional;
 
+import com.vedruna.webapp.persistence.model.Usuario;
 import com.vedruna.webapp.persistence.model.followers;
-import com.vedruna.webapp.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vedruna.webapp.persistence.repository.LinkRepository;
+import com.vedruna.webapp.persistence.repository.FollowersRepository;
 
 /**
  * Servicio que gestiona operaciones relacionadas con las relaciones de
  * seguimiento (followers).
  */
 @Service
-public class LinkService {
+public class FollowersService {
 
 	@Autowired
-	private LinkRepository linkRepository;
+	private FollowersRepository linkRepository;
 
 	/**
 	 * Agrega una relación de seguimiento entre un usuario seguido y un usuario
@@ -26,7 +26,7 @@ public class LinkService {
 	 * @param followed Usuario seguido.
 	 * @param follower Usuario seguidor.
 	 */
-	public void add(User followed, User follower) {
+	public void add(Usuario followed, Usuario follower) {
 		// Verifica si la relación ya existe
 		Optional<followers> optionaLink = linkRepository.findByFollowedIdFollowerId(followed.getId(), follower.getId());
 

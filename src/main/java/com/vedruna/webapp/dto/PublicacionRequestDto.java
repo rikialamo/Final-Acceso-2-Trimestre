@@ -15,7 +15,7 @@ import lombok.Setter;
  * publicaciones. Contiene información necesaria para crear una nueva
  * publicación.
  */
-public class PublicationRequestDto {
+public class PublicacionRequestDto {
 
 	/**
 	 * Identificador único del usuario que realiza la publicación.

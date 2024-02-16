@@ -14,7 +14,7 @@ import lombok.Setter;
  * Clase de transferencia de datos (DTO) para la creación de nuevos usuarios.
  * Contiene información necesaria para crear un nuevo usuario.
  */
-public class UserRequestDto {
+public class UsuarioRequestDto {
 
 	/**
 	 * Nombre de usuario del nuevo usuario.

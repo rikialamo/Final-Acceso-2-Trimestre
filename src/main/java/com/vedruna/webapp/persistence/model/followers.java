@@ -34,14 +34,14 @@ public class followers {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "followed")
-	private User followed;
+	private Usuario followed;
 
 	/**
 	 * Usuario que sigue en la relación(muchos a uno).
 	 */
 	@ManyToOne
 	@JoinColumn(name = "follower")
-	private User follower;
+	private Usuario follower;
 
 	/**
 	 * Constructor que acepta el usuario seguido y el usuario seguidor para crear
@@ -50,7 +50,7 @@ public class followers {
 	 * @param followed Usuario que es seguido en la relación.
 	 * @param follower Usuario que sigue en la relación.
 	 */
-	public followers(User followed, User follower) {
+	public followers(Usuario followed, Usuario follower) {
 		this.followed = followed;
 		this.follower = follower;
 	}

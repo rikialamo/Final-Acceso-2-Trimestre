@@ -5,7 +5,7 @@ package com.vedruna.webapp.exceptions;
  * lanza cuando se intenta acceder a un usuario que no existe en la base de
  * datos.
  */
-public class UserNotFoundException extends RuntimeException {
+public class UsuarioNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,7 +14,7 @@ public class UserNotFoundException extends RuntimeException {
 	 *
 	 * @param id El identificador del usuario no encontrado.
 	 */
-	public UserNotFoundException(long id) {
+	public UsuarioNotFoundException(long id) {
 		super("Usuario no encontrado: id = " + id);
 	}
 
@@ -23,7 +23,7 @@ public class UserNotFoundException extends RuntimeException {
 	 *
 	 * @param name El nombre de usuario del usuario no encontrado.
 	 */
-	public UserNotFoundException(String name) {
+	public UsuarioNotFoundException(String name) {
 		super("Usuario no encontrado: username = " + name);
 	}
 }

@@ -4,7 +4,7 @@ import com.vedruna.security.authentication.dto.AuthenticationResponseDTO;
 import com.vedruna.security.authentication.dto.LoginRequestDTO;
 import com.vedruna.security.authentication.dto.RegisterRequestDTO;
 import com.vedruna.webapp.persistence.model.Role;
-import com.vedruna.webapp.persistence.model.User;
+import com.vedruna.webapp.persistence.model.Usuario;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vedruna.security.jwt.JwtService;
-import com.vedruna.webapp.persistence.repository.UserRepository;
+import com.vedruna.webapp.persistence.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
-	private final UserRepository userRepository;
+	private final UsuarioRepository userRepository;
 	private final JwtService jwtService;
 	private final PasswordEncoder passwordEncoder;
 	private final AuthenticationManager authenticationManager;
@@ -52,7 +52,7 @@ public class AuthenticationService {
 	 */
 	public AuthenticationResponseDTO register(RegisterRequestDTO requestData) {
 
-		User user = new User(requestData.getUsername(), requestData.getEmail(),
+		Usuario user = new Usuario(requestData.getUsername(), requestData.getEmail(),
 				passwordEncoder.encode(requestData.getPassword()), requestData.getDescription(),
 				requestData.getCreationDate(), Role.USER);
 
