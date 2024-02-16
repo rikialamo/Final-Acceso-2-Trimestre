@@ -87,7 +87,7 @@ public class User implements UserDetails {
 	 * Lista de enlaces de seguimiento asociados al usuario.
 	 */
 	@OneToMany(mappedBy = "followed")
-	private List<Link> links;
+	private List<followers> links;
 
 	/**
 	 * Rol del usuario en la aplicación (ADMIN o USER).

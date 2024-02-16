@@ -19,8 +19,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "links")
-public class Link {
+@Table(name = "followers")
+public class followers {
 
 	/**
 	 * Identificador único de la relación de seguimiento.
@@ -50,7 +50,7 @@ public class Link {
 	 * @param followed Usuario que es seguido en la relación.
 	 * @param follower Usuario que sigue en la relación.
 	 */
-	public Link(User followed, User follower) {
+	public followers(User followed, User follower) {
 		this.followed = followed;
 		this.follower = follower;
 	}
